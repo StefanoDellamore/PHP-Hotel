@@ -47,39 +47,40 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- link bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <title>PHP Hotel</title>
     </head>
     <body>
         
-        <div>
-            <?php 
-                foreach ($hotels as $hotel) { ?>
-                <h2>
-                    <?php echo $hotel ['name']?>
-                </h2>
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description:</th>
+                <th scope="col">Parking</th>
+                <th scope="col">Vote</th>
+                <th scope="col">Distance to centre</th>
+                </tr>
+            </thead>
 
-                <p>
-                    Descrizione: <?php echo $hotel ['description']?>
-                </p>
+            <tbody>
+                <?php 
+                    foreach ($hotels as $hotel) { 
+                ?>
 
-                <p>
-                    Parking: <?php echo $hotel ['parking'] ? 'Yes' : 'No' ?>
-                </p>
+                <tr>
+                    <td scope="row"> <?php echo $hotel ['name']?> </td>
+                    <td scope="row"> <?php echo $hotel ['description']?> </td>
+                    <td scope="row"> <?php echo $hotel ['parking'] ? 'Yes' : 'No' ?> </td>
+                    <td scope="row"> <?php echo $hotel ['vote']?> </td>
+                    <td scope="row"> <?php echo $hotel['distance_to_center']. 'km' ?> </th>
+                </tr>
 
-                <p>
-                    Vote: <?php echo $hotel ['vote']?>
-                </p>
+                <?php } ?>
 
-                <p>
-                    Distance to centre: <?php echo $hotel['distance_to_center'] ?>
-                </p>
-
-            
-        </div>
-        <?php } ?>
-        
-        
-        
-        
+            </tbody>
+      
+        </table> 
     </body>
 </html>
