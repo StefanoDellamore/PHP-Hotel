@@ -52,8 +52,18 @@
         <title>PHP Hotel</title>
     </head>
     <body>
-        
+        <br>
+        <!-- form -->
+        <form method="GET">
+            <input type="checkbox"  name="parking" id="parckingCheckbox">
+            <label for="parckingCheckbox">Hotel with parking</label>
+            <button type="submit">Apply</button>
+        </form>
+
+        <br>
+        <!-- table -->
         <table class="table table-striped table-dark">
+        
             <thead>
                 <tr>
                 <th scope="col">Name</th>
@@ -66,16 +76,18 @@
 
             <tbody>
                 <?php 
-                    foreach ($hotels as $hotel) { 
+                    foreach ($hotels as $hotel) {
+                        if (isset($_GET['parking']) && $_GET['parking'] == 'on' && !$hotel['parking']) {
+                            continue;}
                 ?>
 
-                <tr>
-                    <td scope="row"> <?php echo $hotel ['name']?> </td>
-                    <td scope="row"> <?php echo $hotel ['description']?> </td>
-                    <td scope="row"> <?php echo $hotel ['parking'] ? 'Yes' : 'No' ?> </td>
-                    <td scope="row"> <?php echo $hotel ['vote']?> </td>
-                    <td scope="row"> <?php echo $hotel['distance_to_center']. 'km' ?> </th>
-                </tr>
+                    <tr>
+                        <td scope="row"> <?php echo $hotel ['name']?> </td>
+                        <td scope="row"> <?php echo $hotel ['description']?> </td>
+                        <td scope="row"> <?php echo $hotel ['parking'] ? 'Yes' : 'No' ?> </td>
+                        <td scope="row"> <?php echo $hotel ['vote']?> </td>
+                        <td scope="row"> <?php echo $hotel ['distance_to_center']. 'km' ?> </th>
+                    </tr>
 
                 <?php } ?>
 
